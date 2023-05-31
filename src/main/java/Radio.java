@@ -1,5 +1,7 @@
 public class Radio {
     private int currentStation;
+    private int currentVolume;
+
 
     public int getCurrentStation() {
         return currentStation;
@@ -25,7 +27,6 @@ public class Radio {
         } else {
             currentStation = 0;
         }
-
     }
 
     public void prevStation() {
@@ -35,8 +36,6 @@ public class Radio {
             currentStation = 9;
         }
     }
-
-    private int currentVolume;
 
     public int getCurrentVolume() {
         return currentVolume;
