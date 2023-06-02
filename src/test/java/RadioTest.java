@@ -2,128 +2,98 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class RadioTest {
+    Radio condStation = new Radio(10);
 
     @Test
-    public void Station() {
-        Radio rad = new Radio();
+    public void StationMinimum() {
 
-        rad.setCurrentStation(5);
+        condStation.setStationNumber(-1);
 
-        int expected = 5;
-        int actual = rad.getCurrentStation();
-
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void StationMax() {
-        Radio rad = new Radio();
-        rad.setCurrentStation(9);
-
-        int expected = 9;
-        int actual = rad.getCurrentStation();
+        int expected = 0;
+        int actual = condStation.getCurrentNumber();
 
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
     public void StationMin() {
-        Radio rad = new Radio();
 
-        rad.setCurrentStation(0);
-
-        int expected = 0;
-        int actual = rad.getCurrentStation();
-
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void NextStation() {
-        Radio rad = new Radio();
-
-        rad.setCurrentStation(0);
-        rad.nextStation();
-
-        int expected = 1;
-        int actual = rad.getCurrentStation();
-
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void NextStationMaks() {
-        Radio rad = new Radio();
-
-        rad.setCurrentStation(9);
-        rad.nextStation();
+        condStation.setStationNumber(1);
+        condStation.prev();
 
         int expected = 0;
-        int actual = rad.getCurrentStation();
+        int actual = condStation.getCurrentNumber();
 
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void NextStationMaximus() {
-        Radio rad = new Radio();
+    public void StationMax() {
 
-        rad.setCurrentStation(10);
-
-        int expected = 0;
-        int actual = rad.getCurrentStation();
-
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void NextStationMax() {
-        Radio rad = new Radio();
-
-        rad.setCurrentStation(8);
-        rad.nextStation();
+        condStation.setStationNumber(8);
+        condStation.next();
 
         int expected = 9;
-        int actual = rad.getCurrentStation();
+        int actual = condStation.getCurrentNumber();
 
         Assertions.assertEquals(expected, actual);
-
     }
 
     @Test
-    public void PrevStation() {
-        Radio rad = new Radio();
+    public void StationMaximum() {
 
-        rad.setCurrentStation(5);
-        rad.prevStation();
+        condStation.setStationNumber(10);
+
+        int expected = 0;
+        int actual = condStation.getCurrentNumber();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void StationNext() {
+
+        condStation.setStationNumber(5);
+        condStation.next();
+
+        int expected = 6;
+        int actual = condStation.getCurrentNumber();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void StationNextMaximum() {
+
+        condStation.setStationNumber(9);
+        condStation.next();
+
+        int expected = 0;
+        int actual = condStation.getCurrentNumber();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void StationPrev() {
+
+        condStation.setStationNumber(5);
+        condStation.prev();
 
         int expected = 4;
-        int actual = rad.getCurrentStation();
+        int actual = condStation.getCurrentNumber();
 
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void PrevStationMin() {
-        Radio rad = new Radio();
+    public void StationPrevMinimum() {
 
-        rad.setCurrentStation(0);
-        rad.prevStation();
-
-        int expected = 9;
-        int actual = rad.getCurrentStation();
-
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void PrevStationMinimum() {
-        Radio rad = new Radio();
-
-        rad.setCurrentStation(-1);
+        condStation.setStationNumber(0);
+        condStation.prev();
 
         int expected = 9;
-        int actual = rad.getCurrentStation();
+        int actual = condStation.getCurrentNumber();
 
         Assertions.assertEquals(expected, actual);
     }
